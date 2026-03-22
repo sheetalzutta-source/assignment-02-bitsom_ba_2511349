@@ -19,3 +19,10 @@ For example, if a customer_id appears only once in the dataset and that order is
 Similarly, deleting the only order containing a specific product_id removes all information about that product, including product_name, category, and unit_price.
 Additionally, if a sales_rep_id is linked to only one order, deleting that record removes information about the sales representative such as sales_rep_name, sales_rep_email, and office_address.
 This leads to unintended data loss and violates data integrity principles.
+
+## Normalization Justification
+Keeping all data in a single table may seem simpler initially, but it leads to significant data redundancy and anomalies. In the given dataset, customer, product, and sales representative details are repeated across multiple rows for each order. For example, if a customer like Priya Sharma places multiple orders, her email and city are stored repeatedly. This increases storage usage and creates consistency issues.
+Update anomalies occur when a value needs to be changed in multiple rows. For instance, if a customer's email changes, it must be updated everywhere. Missing even one row leads to inconsistent data. Insert anomalies arise when we cannot add information independently. For example, a new product cannot be added unless it is part of an order. Similarly, delete anomalies occur when deleting an order results in loss of important data such as customer or product details.
+Normalization to Third Normal Form (3NF) solves these problems by separating data into related tables such as customers, products, orders, order_items, and sales_reps. Each table stores only relevant attributes, and relationships are maintained using foreign keys. This eliminates redundancy, ensures data integrity, and makes updates, inserts, and deletes safe and consistent. Therefore, normalization is not over engineering but a necessary step for reliable database design.
+
+
