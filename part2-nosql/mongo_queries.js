@@ -29,7 +29,7 @@ product_name: "Milk",
 category: "Groceries",
 price: 60,
 brand: "Amul",
-expiry_date: "2026-03-25",
+expiry_date: ISODate("2026-03-25"),
 weight: "500ml",
 nutrition: {
 calories: 150,
@@ -48,7 +48,7 @@ price: { $gt: 20000 }
 // OP3: find() — retrieve all Groceries expiring before 2025-01-01
 db.products.find({
 category: "Groceries",
-expiry_date: { $lt: "2025-01-01" }
+expiry_date: { $lt: ISODate("2025-01-01") }
 });
 
 // OP4: updateOne() — add a "discount_percent" field to a specific product
